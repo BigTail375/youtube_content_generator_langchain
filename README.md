@@ -3,13 +3,13 @@
 
 ## Interface
 
-![](https://github.com/ongraphpythondev/langchain_youtube_content_generator/blob/main/images/image1.png)
+![](https://github.com/BigTail375/youtube_content_generator_langchain/blob/main/images/image1.png)
 
-![](https://github.com/ongraphpythondev/langchain_youtube_content_generator/blob/main/images/image2.png)
+![](https://github.com/BigTail375/youtube_content_generator_langchain/blob/main/images/image2.png)
 
 ## Clone the repository
 
-`git clone https://github.com/ongraphpythondev/langchain_youtube_content_generator.git`
+`git clone https://github.com/BigTail375/youtube_content_generator_langchain.git`
 
 
 ## Create python environment
