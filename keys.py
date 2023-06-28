@@ -1,1 +1,1 @@
-OPEN_AI_API= ""
+OPEN_AI_API= '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'
