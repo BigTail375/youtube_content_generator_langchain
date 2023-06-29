@@ -1,1 +1,1 @@
-OPEN_AI_API= 'your open_api_key'
+OPEN_AI_API= ''
