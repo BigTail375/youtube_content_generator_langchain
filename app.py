@@ -7,8 +7,9 @@ from langchain.chains import LLMChain
 from langchain.chains import SimpleSequentialChain,SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from callback import MyCustomSyncHandler, MyCustomAsyncHandler
 
-os.environ['OPEN_AI_API']=OPEN_AI_API
+#os.environ['OPEN_AI_API']=OPEN_AI_API
 
 print("--------------------------------------------------------------------------------")
 sc.title("🦜🔗 Youtube Content Generator")
@@ -32,15 +33,14 @@ script_memory=ConversationBufferMemory(input_key='title',memory_key="chat histor
 llm_model=OpenAI(openai_api_key=OPEN_AI_API,
                  temperature=0.9,
                  streaming=True,
-                 callbacks=[StreamingStdOutCallbackHandler()]
+                 callbacks=[MyCustomSyncHandler(), MyCustomAsyncHandler()]
                  )
 # Title chain 
 title_chain=LLMChain(llm=llm_model,prompt=title_template,output_key="title",memory=title_memory,verbose=True)
 # script chain
 script_chain=LLMChain(llm=llm_model,prompt=script_template,output_key="script",memory=script_memory,verbose=True)
 
-# sequential_chain=SequentialChain(chains=[title_chain,script_chain],input_variables=["topic"],
-#                                  output_variables=["title","script"],verbose=True)
+
 
 # for output
 if prompt:
@@ -48,7 +48,7 @@ if prompt:
     title_=title_chain.run(prompt)
 
     script_out=script_chain.run(title=title_)
-    print("123123script out:", script_out)
+
     sc.write("Title: "+title_)
     sc.write("Script: "+script_out)
     with sc.expander('Title History'):
